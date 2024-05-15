@@ -1,0 +1,125 @@
+server:
+    error:
+        include-message: always
+        include-binding-errors: always
+    port: 8080
+spring:
+    data:
+        redis:
+            repositories:
+                enabled: false
+    datasource:
+        url: 
+        username: 
+        password: 
+        hikari:
+            maximum-pool-size: 10
+            connection-timeout: 60000
+            validation-timeout: 3000
+            idle-timeout: 60000
+            login-timeout: 10
+            max-lifetime: 600000
+            minimum-idle: 6
+            read-only: false
+    jpa:
+        properties:
+            hibernate:
+                format_sql: true
+                jdbc:
+                    batch_size: 4096
+                    batch_versioned_data: true
+                order_updates: true
+                order_inserts: true
+                generate_statistics: true
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+        open-in-view: on
+    mail:
+        host: 
+        port: 587
+        username: 
+        password: 
+        default-encoding: UTF-8
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    ssl:
+                        enable: true
+                        socketFactory:
+                            class: com.sun.mail.util.MailSSLSocketFactory
+                            fallback: false
+                debug: true
+logging:
+    file:
+        name: main.log
+    level:
+        root: info
+        web: info
+        sql: info
+options:
+    resources:
+        main-dir: "src/main/resources/static"
+        hospital-list: "src/main/resources/static/hospital-list"
+        hospital-detail-dir: "src/main/resources/static/hospital-info"
+        doctor-detail-dir: "src/main/resources/static/doctor-info"
+        doctor-statistics-dir: "src/main/resources/static/doctor-statistics"
+        doctor-offline-review-dir: "src/main/resources/static/doctor-online-review"
+        doctor-online-review-dir: "src/main/resources/static/doctor-offline-review"
+        doctor-consultation-dir: "src/main/resources/static/doctor-consultation"
+        doctor-offline-review-text-dir: "src/main/resources/static/doctor-online-review-text"
+    index:
+        hospital-index-dir: "src/main/resources/static/hospital-index"
+        doctor-index-dir: "src/main/resources/static/doctor-index"
+    cache:
+        redis-host: 127.0.0.1
+        redis-port: 6379
+        redis-default-entry-ttl-hours: 8
+    main-executor:
+        core-pool-size: 2
+        max-pool-size: 2
+        queue-capacity: 65536
+        await-termination-seconds: 3600
+        thread-name-prefix: "main-exec-"
+    downloader-executor:
+        core-pool-size: 4
+        max-pool-size: 4
+        queue-capacity: 262144
+        await-termination-seconds: 3600
+        thread-name-prefix: "downloader-exec-"
+    proxy:
+        host: 
+        port: 
+        username: 
+        password:
+        timeout-second: 15
+        user-agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+    runner:
+        load-hospital: false
+        load-hospital-detail: false
+        load-doctor-detail: false
+        load-doctor-statistics: false
+        load-doctor-and-hospital-id: false
+        parse-doctor-info: false
+        parse-offline-review: false
+        parse-online-review: false
+        parse-doctor-consultation: false
+        parse-doctor-offline-review-text: false
+        index-hospital: false
+        index-doctor: false
+        analyze-text-sentiment: false
+        analyze-geographical-distance: false
+        get-hospital-geocode: false
+    downloader:
+        batch-size: 16
+        await-termination-seconds: 3600
+        doctor-list: false
+        doctor-online-review-list: false
+        doctor-offline-review-list: false
+        doctor-consultation-list: false
+        hospital-info: false
+        doctor-statistics: false
+        doctor-offline-review-content: false
+    other:
+        amap-key: 
